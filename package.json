@@ -1,0 +1,30 @@
+{
+  "author": "Ersun Warncke <ersun.warncke@gmail.com>",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "immutable-require-valid-log-client": "^0.1.0",
+    "immutable-require-valid-optional-object": "^0.1.0",
+    "micro-timestamp": "^0.1.0",
+    "random-unique-id": "^0.1.0",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  },
+  "description": "Immutable http client",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "http-promise": "^0.1.4",
+    "mocha": "^3.0.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT",
+  "main": "lib/immutable-http-client.js",
+  "name": "immutable-http-client",
+  "repository": "warncke/immutable-http-client",
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "0.1.0"
+}

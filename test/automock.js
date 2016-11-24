@@ -20,16 +20,20 @@ describe('immutable-http-client: automock', function () {
     })
 
     it('should allow setting an automock function', function () {
-        // set automock function
-        httpClient.automock(function () {})
+        // set automock factory method
+        httpClient.automock(function () {
+            return function () {}
+        })
         // test automock function
         assert.isFunction(httpClient.automock())
     })
 
     it('should call automock function when doing a request', function () {
-        // set automock function
+        // set automock factory method
         httpClient.automock(function () {
-            return Promise.resolve('automock called')
+            return function () {
+                return Promise.resolve('automock called')
+            }
         })
         // call http client which should call automock function
         return httpClient.get().then(function (res) {
@@ -40,16 +44,18 @@ describe('immutable-http-client: automock', function () {
     it('should execute regular request when automock does not have mock', function () {
         // count of calls to automock wrapper
         var automockCount = 0
-        // set automock function
-        httpClient.automock(function (options, session) {
-            automockCount++
-            // get shallow clone of session to do local change on automock prop
-            session = _.clone(session)
-            // set automock flag to false so that call to httpClient.request will
-            // actually be processed
-            session.automock = false
-            // call request method which should not execute
-            return httpClient.request.apply(this, [options, session])
+        // set automock factory method
+        httpClient.automock(function (httpClient) {
+            return function (options, session) {
+                automockCount++
+                // get shallow clone of session to do local change on automock prop
+                session = _.clone(session)
+                // set automock flag to false so that call to httpClient.request will
+                // actually be processed
+                session.automock = false
+                // call request method which should not execute
+                return httpClient.request.apply(this, [options, session])
+            }
         })
         // count of requests handled by server
         var requestCount = 0
@@ -80,13 +86,15 @@ describe('immutable-http-client: automock', function () {
     it('should return mock data and not execute regular request when automock has mock', function () {
         // count of calls to automock wrapper
         var automockCount = 0
-        // set automock function
-        httpClient.automock(function (options, session) {
-            automockCount++
-            // get shallow clone of session to do local change on automock prop
-            session = _.clone(session)
-            // return response
-            return Promise.resolve({body: 'bar'})
+        // set automock factory method
+        httpClient.automock(function (httpClient) {
+            return function (options, session) {
+                automockCount++
+                // get shallow clone of session to do local change on automock prop
+                session = _.clone(session)
+                // return response
+                return Promise.resolve({body: 'bar'})
+            }
         })
         // count of requests handled by server
         var requestCount = 0

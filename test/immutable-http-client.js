@@ -15,6 +15,10 @@ const testUrl = 'http://localhost:'+testPort
 
 describe('immutable-http-client', function () {
 
+    beforeEach(function () {
+        httpClient.reset()
+    })
+
     it('should make GET request', function () {
         // create test server
         var server = httpServer.createServerAsync(function (req, res) {
@@ -341,7 +345,7 @@ describe('immutable-http-client', function () {
                 // 2nd call: http error
                 (type, data) => {  
                     assert.strictEqual(data.httpRequestId, httpRequestId)
-                    assert.strictEqual(data.httpRequestError, 'Unexpected token o')
+                    assert.match(data.httpRequestError, /Unexpected token/)
                 }
             ]
         })

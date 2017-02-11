@@ -1,20 +1,21 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "immutable-require-valid-log-client": "^0.1.0",
-    "immutable-require-valid-optional-object": "^0.1.0",
-    "micro-timestamp": "^0.1.0",
-    "random-unique-id": "^0.1.0",
-    "request": "^2.79.0",
-    "request-promise": "^4.1.1"
+    "bluebird": "3.4.7",
+    "immutable-require-valid-log-client": "0.1.0",
+    "immutable-require-valid-optional-object": "0.1.0",
+    "micro-timestamp": "0.1.0",
+    "random-unique-id": "0.1.0",
+    "request": "2.79.0",
+    "request-promise": "4.1.1"
   },
   "description": "Immutable http client",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "http-promise": "^0.1.4",
-    "mocha": "^3.1.2"
+    "chai": "3.5.0",
+    "chai-as-promised": "6.0.0",
+    "http-promise": "0.1.4",
+    "mocha": "3.2.0",
+    "mockumentary": "^0.3.1"
   },
   "directories": {
     "test": "test"
@@ -26,5 +27,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.3.0"
+  "version": "0.3.1"
 }

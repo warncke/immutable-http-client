@@ -4,8 +4,8 @@
     "bluebird": "3.5.0",
     "immutable-require-valid-log-client": "0.1.1",
     "immutable-require-valid-optional-object": "0.1.1",
-    "micro-timestamp": "0.1.10",
-    "random-unique-id": "0.1.7",
+    "micro-timestamp": "0.1.12",
+    "random-unique-id": "0.1.8",
     "request": "2.81.0",
     "request-promise": "4.2.0"
   },
@@ -30,5 +30,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.4.11"
+  "version": "0.4.12"
 }

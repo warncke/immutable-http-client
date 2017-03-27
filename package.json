@@ -2,20 +2,35 @@
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
     "bluebird": "3.5.0",
-    "immutable-require-valid-log-client": "0.1.1",
+    "body-parser": "1.17.1",
+    "change-case": "3.0.1",
+    "cookie-parser": "1.4.3",
+    "debug": "2.6.3",
+    "deep-freeze": "0.0.1",
+    "express": "4.15.2",
+    "express-handlebars-multi": "0.1.14",
+    "get-env": "0.5.10",
+    "handlebars-helpers": "0.8.0",
+    "immutable-app-http-error": "0.1.1",
+    "immutable-app-http-redirect": "0.1.0",
+    "immutable-core": "1.2.12",
+    "immutable-core-controller": "0.3.18",
+    "immutable-core-model": "1.5.12",
     "immutable-require-valid-optional-object": "0.1.1",
-    "micro-timestamp": "0.1.12",
+    "morgan": "1.8.1",
+    "pluralize": "4.0.0",
     "random-unique-id": "0.1.8",
-    "request": "2.81.0",
-    "request-promise": "4.2.0"
+    "stack-trace": "0.0.9"
   },
-  "description": "Immutable http client",
+  "description": "Immutable app",
   "devDependencies": {
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
-    "http-promise": "0.1.4",
+    "immutable-database-mariasql": "1.2.13",
+    "immutable-http-client": "0.4.12",
     "mocha": "3.2.0",
-    "mockumentary": "0.3.2"
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0"
   },
   "directories": {
     "test": "test"
@@ -24,11 +39,11 @@
     "node": ">=7.6.0"
   },
   "license": "MIT",
-  "main": "lib/immutable-http-client.js",
-  "name": "immutable-http-client",
-  "repository": "warncke/immutable-http-client",
+  "main": "lib/immutable-app.js",
+  "name": "immutable-app",
+  "repository": "warncke/immutable-app",
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.4.12"
+  "version": "0.2.15"
 }

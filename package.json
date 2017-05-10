@@ -7,7 +7,7 @@
     "micro-timestamp": "0.1.14",
     "random-unique-id": "0.1.10",
     "request": "2.81.0",
-    "request-promise": "4.2.0"
+    "request-promise": "4.2.1"
   },
   "description": "Immutable http client",
   "devDependencies": {
@@ -30,5 +30,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.4.16"
+  "version": "0.4.17"
 }

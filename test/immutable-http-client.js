@@ -282,7 +282,7 @@ describe('immutable-http-client', function () {
                     // validate log data
                     assert.strictEqual(type, 'httpRequest')
                     assert.match(data.httpRequestCreateTime, /^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d\.\d\d\d\d\d\d$/)
-                    assert.match(data.httpRequestId, /^[0-9A-Z]{32}$/)
+                    assert.match(data.httpRequestId, /^[0-9A-f]{32}$/)
                     assert.strictEqual(data.httpRequestMethod, 'GET')
                     assert.strictEqual(data.httpRequestUrl, 'http://localhost:37591')
                     assert.strictEqual(data.moduleCallId, 'foo')

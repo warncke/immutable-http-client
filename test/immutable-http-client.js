@@ -1,11 +1,12 @@
 'use strict'
 
+const ImmutableAI = require('immutable-ai')
+const MockLogClient = require('../mock/mock-log-client')
 const Promise = require('bluebird')
 const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
 const httpClient = require('../lib/immutable-http-client')
 const httpServer = require('http-promise')
-const MockLogClient = require('../mock/mock-log-client')
 
 chai.use(chaiAsPromised)
 const assert = chai.assert
@@ -48,6 +49,118 @@ describe('immutable-http-client', function () {
             assert.strictEqual(res.body, 'foo')
             assert.strictEqual(res.rawHeaders[0], 'Content-Type')
             assert.strictEqual(res.rawHeaders[1], 'text/html')
+            assert.strictEqual(res.statusCode, 200)
+        })
+        .finally(function () {
+            // stop server
+            return server.close()
+        })
+    })
+
+    it('should make GET request with ImmutableAI', function () {
+        // capture http request id
+        var httpRequestId
+        // create mock log client
+        var mockLogClient = new MockLogClient({
+            log: ()=> [
+                // 1st call: http request
+                (type, data) => {
+                    // validate log data
+                    assert.strictEqual(type, 'httpRequest')
+                    assert.match(data.httpRequestCreateTime, /^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d\.\d\d\d\d\d\d$/)
+                    assert.match(data.httpRequestId, /^[0-9A-f]{32}$/)
+                    assert.strictEqual(data.httpRequestMethod, 'GET')
+                    assert.strictEqual(data.httpRequestUrl, 'http://localhost:37591')
+                    assert.strictEqual(data.moduleCallId, 'foo')
+                    assert.strictEqual(data.requestId, 'foo')
+                    assert.strictEqual(data.options.foo, true)
+                    // capture http request id
+                    httpRequestId = data.httpRequestId
+                },
+                // 2nd call - ignore
+                () => {},
+            ]
+        })
+        // set log client so that http client will log requests
+        httpClient.logClient(mockLogClient)
+        // create test server
+        var server = httpServer.createServerAsync(function (req, res) {
+            // send response
+            res.writeHead(200, {'Content-Type': 'text/html'})
+            res.end('foo')
+        })
+        // listen
+        return server.listen(testPort)
+        // do request
+        .then(function () {
+            // create a new ImmutableAI instance
+            var ai = ImmutableAI({
+                session: {
+                    moduleCallId: 'foo',
+                    requestId: 'foo',
+                },
+            })
+            return ai.http.get(testUrl, {foo: true})
+        })
+        // test response
+        .then(function (res) {
+            assert.strictEqual(res.statusCode, 200)
+        })
+        .finally(function () {
+            // stop server
+            return server.close()
+        })
+    })
+
+    it('should make http request with ImmutableAI', function () {
+        // capture http request id
+        var httpRequestId
+        // create mock log client
+        var mockLogClient = new MockLogClient({
+            log: ()=> [
+                // 1st call: http request
+                (type, data) => {
+                    // validate log data
+                    assert.strictEqual(type, 'httpRequest')
+                    assert.match(data.httpRequestCreateTime, /^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d\.\d\d\d\d\d\d$/)
+                    assert.match(data.httpRequestId, /^[0-9A-f]{32}$/)
+                    assert.strictEqual(data.httpRequestMethod, 'GET')
+                    assert.strictEqual(data.httpRequestUrl, 'http://localhost:37591')
+                    assert.strictEqual(data.moduleCallId, 'foo')
+                    assert.strictEqual(data.requestId, 'foo')
+                    // capture http request id
+                    httpRequestId = data.httpRequestId
+                },
+                // 2nd call - ignore
+                () => {},
+            ]
+        })
+        // set log client so that http client will log requests
+        httpClient.logClient(mockLogClient)
+        // create test server
+        var server = httpServer.createServerAsync(function (req, res) {
+            // send response
+            res.writeHead(200, {'Content-Type': 'text/html'})
+            res.end('foo')
+        })
+        // listen
+        return server.listen(testPort)
+        // do request
+        .then(function () {
+            // create a new ImmutableAI instance
+            var ai = ImmutableAI({
+                session: {
+                    moduleCallId: 'foo',
+                    requestId: 'foo',
+                },
+            })
+            return ai.http.request({
+                method: 'GET',
+                uri: testUrl,
+            })
+        })
+        // test response
+        .then(function (res) {
             assert.strictEqual(res.statusCode, 200)
         })
         .finally(function () {

@@ -3,10 +3,10 @@
   "dependencies": {
     "bluebird": "3.5.0",
     "immutable-ai": "0.6.1",
-    "immutable-require-valid-log-client": "0.1.12",
-    "immutable-require-valid-optional-object": "0.1.12",
-    "micro-timestamp": "0.1.26",
-    "random-unique-id": "1.0.12",
+    "immutable-require-valid-log-client": "0.1.13",
+    "immutable-require-valid-optional-object": "0.1.13",
+    "micro-timestamp": "0.1.27",
+    "random-unique-id": "1.0.13",
     "request": "2.81.0",
     "request-promise": "4.2.1"
   },
@@ -16,7 +16,7 @@
     "chai-as-promised": "7.1.1",
     "http-promise": "0.1.4",
     "mocha": "3.5.1",
-    "mockumentary": "0.3.13"
+    "mockumentary": "0.3.14"
   },
   "directories": {
     "test": "test"
@@ -31,5 +31,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.6.13"
+  "version": "0.6.14"
 }

@@ -1,7 +1,7 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "bluebird": "3.5.0",
+    "bluebird": "3.5.1",
     "immutable-ai": "0.7.2",
     "immutable-require-valid-log-client": "0.1.15",
     "immutable-require-valid-optional-object": "0.1.15",
@@ -31,5 +31,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.6.21"
+  "version": "0.6.22"
 }

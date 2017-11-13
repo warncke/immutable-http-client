@@ -5,7 +5,7 @@
     "immutable-ai": "0.8.0",
     "immutable-require-valid-log-client": "0.1.16",
     "immutable-require-valid-optional-object": "0.1.16",
-    "micro-timestamp": "0.1.32",
+    "micro-timestamp": "0.1.33",
     "random-unique-id": "1.0.18",
     "request": "2.83.0",
     "request-promise": "4.2.2"
@@ -31,5 +31,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.6.28"
+  "version": "0.6.29"
 }

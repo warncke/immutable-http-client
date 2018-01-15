@@ -4,10 +4,10 @@
     "bluebird": "3.5.1",
     "debug": "3.1.0",
     "immutable-ai": "0.8.1",
-    "immutable-require-valid-log-client": "0.1.16",
-    "immutable-require-valid-optional-object": "0.1.16",
-    "micro-timestamp": "0.1.36",
-    "random-unique-id": "1.0.22",
+    "immutable-require-valid-log-client": "0.1.17",
+    "immutable-require-valid-optional-object": "0.1.17",
+    "micro-timestamp": "0.1.37",
+    "random-unique-id": "1.0.23",
     "request": "2.83.0",
     "request-promise": "4.2.2"
   },
@@ -17,7 +17,7 @@
     "chai-as-promised": "7.1.1",
     "http-promise": "0.1.4",
     "mocha": "4.1.0",
-    "mockumentary": "0.3.17"
+    "mockumentary": "0.3.18"
   },
   "directories": {
     "test": "test"
@@ -32,5 +32,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.7.1"
+  "version": "0.7.2"
 }

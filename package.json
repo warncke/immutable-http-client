@@ -3,25 +3,23 @@
   "dependencies": {
     "bluebird": "3.7.2",
     "debug": "4.3.1",
-    "immutable-ai": "0.8.3",
-    "immutable-require-valid-log-client": "0.1.18",
+    "immutable-ai": "0.9.0",
+    "immutable-require-valid-log-client": "0.2.0",
     "immutable-require-valid-optional-object": "0.1.18",
-    "micro-timestamp": "2.0.0",
-    "random-unique-id": "2.0.0",
-    "request": "2.88.0",
-    "request-promise": "4.2.2"
+    "micro-timestamp": "2.1.0",
+    "node-fetch": "2.7.0",
+    "random-unique-id": "2.1.0"
   },
   "description": "Immutable http client",
   "devDependencies": {
-    "chai": "4.3.4",
+    "chai": "4.3.10",
     "chai-as-promised": "7.1.1",
-    "mocha": "8.3.2"
+    "mocha": "10.2.0",
+    "nock": "13.4.0",
+    "sinon": "10.0.0"
   },
   "directories": {
     "test": "test"
-  },
-  "engines": {
-    "node": ">=7.6.0"
   },
   "license": "MIT",
   "main": "lib/immutable-http-client.js",
